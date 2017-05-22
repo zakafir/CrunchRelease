@@ -1,15 +1,10 @@
 package app.num.linechart;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,72 +13,64 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LineChart lineChartChasse = (LineChart) findViewById(R.id.chartChasse);
-        LineChart lineChartLavabo = (LineChart) findViewById(R.id.chartLavabo);
+        Button btnGoutte,btnRobinet,btnAlerte,btnChasse,btnLed,btnReglage;
 
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(0f, 0));
-        entries.add(new Entry(0f, 1));
-        entries.add(new Entry(6f, 2));
-        entries.add(new Entry(6f, 3));
-        entries.add(new Entry(0f, 4));
-        entries.add(new Entry(0f, 5));
-
-        LineDataSet dataset = new LineDataSet(entries, "# of Calls");
-
-        ArrayList<String> labels = new ArrayList<String>();
-        labels.add("January");
-        labels.add("February");
-        labels.add("March");
-        labels.add("April");
-        labels.add("May");
-        labels.add("June");
-
-        LineData data = new LineData(labels, dataset);
-        dataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-        dataset.setDrawCubic(false);
-        dataset.setDrawFilled(true);
-
-        lineChartChasse.setData(data);
-        lineChartChasse.animateY(5000);
+        btnGoutte = (Button)findViewById(R.id.btnGoutte);
+        btnRobinet = (Button)findViewById(R.id.btnRobinet);
+        btnAlerte = (Button)findViewById(R.id.btnAlerte);
+        btnChasse = (Button)findViewById(R.id.btnChasse);
+        btnLed = (Button)findViewById(R.id.btnLed);
+        btnReglage = (Button)findViewById(R.id.btnReglage);
 
 
-        /**
-         * Chart Lavabo
-         * */
+        btnGoutte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, ConsoWaterActivity.class);
+                startActivity(i);
+            }
+        });
 
-        ArrayList<Entry> entriesLavabo = new ArrayList<>();
-        entriesLavabo.add(new Entry(0f, 0));
-        entriesLavabo.add(new Entry(0f, 1));
-        entriesLavabo.add(new Entry(3f, 2));
-        entriesLavabo.add(new Entry(3f, 3));
-        entriesLavabo.add(new Entry(0f, 4));
-        entriesLavabo.add(new Entry(0f, 5));
-        entriesLavabo.add(new Entry(3f, 6));
-        entriesLavabo.add(new Entry(3f, 7));
-        entriesLavabo.add(new Entry(0f, 8));
-        entriesLavabo.add(new Entry(0f, 9));
+        btnRobinet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, TapActivity.class);
+                startActivity(i);
+            }
+        });
 
-        LineDataSet dataset2 = new LineDataSet(entriesLavabo, "# of Calls");
+        btnAlerte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, WarningActivity.class);
+                startActivity(i);
+            }
+        });
 
-        ArrayList<String> labels2 = new ArrayList<String>();
-        labels2.add("Janvier");
-        labels2.add("Fevrier");
-        labels2.add("Mars");
-        labels2.add("Avril");
-        labels2.add("Mai");
-        labels2.add("Juin");
-        labels2.add("Juillet");
-        labels2.add("Aout");
-        labels2.add("Septembre");
-        labels2.add("Octobre");
+        btnChasse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FlushActivity.class);
+                startActivity(i);
+            }
+        });
 
-        LineData data2 = new LineData(labels2, dataset2);
-        dataset2.setColors(ColorTemplate.COLORFUL_COLORS); //
-        dataset2.setDrawCubic(false);
-        dataset2.setDrawFilled(true);
+        btnLed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, LedActivity.class);
+                startActivity(i);
+            }
+        });
 
-        lineChartLavabo.setData(data2);
-        lineChartLavabo.animateY(5000);
+        btnReglage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(i);
+            }
+        });
+
+
     }
 }

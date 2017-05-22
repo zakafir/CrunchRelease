@@ -9,26 +9,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.num.linechart.MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graphe Chasse d'eau"/>
+    <Button
+        android:id="@+id/btnGoutte"
+        android:text="btnGoutte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteY="371dp"
+        tools:layout_editor_absoluteX="256dp" />
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chartChasse"
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+    <Button
+        android:id="@+id/btnRobinet"
+        android:text="btnRobinet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="371dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Graphe Lavabo"
-            android:layout_alignTop="@id/chartLavabo"/>
+    <Button
+        android:id="@+id/btnAlerte"
+        android:text="btnAlerte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="231dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/chartLavabo"
-            android:layout_width="match_parent"
-            android:layout_alignParentBottom="true"
-            android:layout_height="200dp" />
+    <Button
+        android:id="@+id/btnChasse"
+        android:text="btnChasse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="231dp"
+        android:layout_alignBaseline="@+id/btnLed"
+        android:layout_alignBottom="@+id/btnLed"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/btnLed"
+        android:text="btnLed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="111dp"
+        android:layout_below="@+id/btnReglage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="156dp" />
+
+    <Button
+        android:id="@+id/btnReglage"
+        android:text="btnReglage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="111dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
