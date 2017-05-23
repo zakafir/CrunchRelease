@@ -52,23 +52,21 @@ public class ConsoWaterActivity extends AppCompatActivity {
 
         PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartChasse);
         ArrayList<Entry> entriesPieChart = new ArrayList<>();
-        entriesPieChart.add(new Entry(4f, 0));
-        entriesPieChart.add(new Entry(8f, 1));
-        entriesPieChart.add(new Entry(12f, 2));
-        entriesPieChart.add(new Entry(10f, 3));
-        entriesPieChart.add(new Entry(18f, 4));
-        entriesPieChart.add(new Entry(9f, 5));
+        entriesPieChart.add(new Entry(4.1f, 0));
+        entriesPieChart.add(new Entry(8.6f, 1));
+        entriesPieChart.add(new Entry(10.9f, 3));
+        entriesPieChart.add(new Entry(9.11f, 5));
 
-        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "# of Calls");
+        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
 
         PieData pieData = new PieData(labels, pieDataset);
-        pieDataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-        pieChartChasse.setDescription("Description de chart");
+        pieDataset.setColors(ColorTemplate.VORDIPLOM_COLORS); //
+        pieChartChasse.setDescription("Quantité d'eau perdue");
         pieChartChasse.setData(pieData);
 
         pieChartChasse.animateY(2000);
     }
-    public static ArrayList<String> getXAxisValues() {
+    private ArrayList<String> getXAxisValues() {
         ArrayList<String> labels = new ArrayList();
         labels.add("04h");
         labels.add("08h");
@@ -79,30 +77,28 @@ public class ConsoWaterActivity extends AppCompatActivity {
         return labels;
     }
 
-    public static LineData lineData(){
+    private LineData lineData(){
             ArrayList<Entry> line = new ArrayList();
-            line.add(new Entry(2f, 0));
-            line.add(new Entry(4f, 1));
-            line.add(new Entry(18f, 2));
-            line.add(new Entry(6f, 3));
-            line.add(new Entry(9f, 4));
-            line.add(new Entry(4f, 5));
-            LineDataSet lineDataSet = new LineDataSet(line, "Brand 2");
-                lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+            line.add(new Entry(1f, 0));
+            line.add(new Entry(2f, 1));
+            line.add(new Entry(9f, 2));
+            line.add(new Entry(3f, 3));
+            line.add(new Entry(4.5f, 4));
+            line.add(new Entry(2f, 5));
+            LineDataSet lineDataSet = new LineDataSet(line, "Conso moyenne");
             LineData lineData = new LineData(getXAxisValues(),lineDataSet);
             return lineData;
         }
-
-    public static BarData barData(){
+    private BarData barData(){
             ArrayList<BarEntry> group1 = new ArrayList();
-                 group1.add(new BarEntry(4f, 0));
-                 group1.add(new BarEntry(8f, 1));
-                 group1.add(new BarEntry(6f, 2));
-                 group1.add(new BarEntry(12f, 3));
-                 group1.add(new BarEntry(18f, 4));
-                 group1.add(new BarEntry(9f, 5));
-            BarDataSet barDataSet = new BarDataSet(group1, "Brand 1");
-                 barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+                 group1.add(new BarEntry(2f, 0));
+                 group1.add(new BarEntry(4f, 1));
+                 group1.add(new BarEntry(18f, 2));
+                 group1.add(new BarEntry(6f, 3));
+                 group1.add(new BarEntry(9f, 4));
+                 group1.add(new BarEntry(4f, 5));
+            BarDataSet barDataSet = new BarDataSet(group1, "Consommation de la chasse");
+                 barDataSet.setColors(ColorTemplate.PASTEL_COLORS);
             BarData barData = new BarData(getXAxisValues(),barDataSet);
          return barData;
         }
