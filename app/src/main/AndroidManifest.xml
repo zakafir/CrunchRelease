@@ -20,6 +20,10 @@
         <activity android:name=".FlushActivity" />
         <activity android:name=".LedActivity" />
         <activity android:name=".TapActivity" />
+        <activity android:name=".PrefsActivity" />
+        <activity android:name=".SampleActivity" />
+        <activity android:name=".SampleActivity2" />
+        <activity android:name=".SampleActivity3" />
         <activity android:name=".SettingsActivity"></activity>
     </application>
 

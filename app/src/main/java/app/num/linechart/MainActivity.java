@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,14 +14,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnGoutte,btnRobinet,btnAlerte,btnChasse,btnLed,btnReglage;
+        ImageButton btnGoutte,btnRobinet,btnAlerte,btnChasse,btnLed,btnReglage;
 
-        btnGoutte = (Button)findViewById(R.id.btnGoutte);
-        btnRobinet = (Button)findViewById(R.id.btnRobinet);
-        btnAlerte = (Button)findViewById(R.id.btnAlerte);
-        btnChasse = (Button)findViewById(R.id.btnChasse);
-        btnLed = (Button)findViewById(R.id.btnLed);
-        btnReglage = (Button)findViewById(R.id.btnReglage);
+        btnGoutte = (ImageButton)findViewById(R.id.btnGoutte);
+        btnRobinet = (ImageButton)findViewById(R.id.btnRobinet);
+        btnAlerte = (ImageButton)findViewById(R.id.btnAlerte);
+        btnChasse = (ImageButton)findViewById(R.id.btnChasse);
+        btnLed = (ImageButton)findViewById(R.id.btnLed);
+        btnReglage = (ImageButton)findViewById(R.id.btnReglage);
 
 
         btnGoutte.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, LedActivity.class);
+                Intent i = new Intent(MainActivity.this, SampleActivity2.class);
                 startActivity(i);
             }
         });

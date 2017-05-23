@@ -3,7 +3,11 @@ package app.num.linechart;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -45,6 +49,38 @@ public class FlushActivity extends AppCompatActivity {
         dataset.setDrawFilled(true);
 
         lineChartChasse.setData(data);
-        lineChartChasse.animateY(5000);
+        lineChartChasse.animateY(3000);
+
+
+        //Bar chart
+
+        BarChart barChart = (BarChart) findViewById(R.id.barChartFlush);
+        ArrayList <BarEntry> barEntries = new ArrayList<>();
+                barEntries.add(new BarEntry(4f, 0));
+                barEntries.add(new BarEntry(8f, 1));
+                barEntries.add(new BarEntry(6f, 2));
+                barEntries.add(new BarEntry(12f, 3));
+                barEntries.add(new BarEntry(18f, 4));
+                barEntries.add(new BarEntry(9f, 5));
+
+
+        BarDataSet barDataSet = new BarDataSet(barEntries, "# of Calls");
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        // creating barLabels
+        ArrayList<String> barLabels = new ArrayList();
+                barLabels.add("January");
+                barLabels.add("February");
+                barLabels.add("March");
+                barLabels.add("April");
+                barLabels.add("May");
+                barLabels.add("June");
+
+        BarData barData = new BarData(barLabels, barDataSet);
+        barChart.setData(barData);
+        barChart.setDescription("Some description");
+        barChart.animateY(3000);
+
+
     }
 }

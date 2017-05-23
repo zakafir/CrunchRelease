@@ -9,67 +9,88 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="app.num.linechart.MainActivity">
 
-    <Button
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
         android:id="@+id/btnGoutte"
-        android:text="btnGoutte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Goutte"
+        android:src="@drawable/water"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         tools:layout_editor_absoluteY="371dp"
-        tools:layout_editor_absoluteX="256dp" />
+        tools:layout_editor_absoluteX="256dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <Button
-        android:id="@+id/btnRobinet"
-        android:text="btnRobinet"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:id="@+id/btnReglage"
+        android:text="Settings"
+        android:src="@drawable/settings"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="371dp"
+        tools:layout_editor_absoluteY="111dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <Button
+
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
         android:id="@+id/btnAlerte"
-        android:text="btnAlerte"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Alerte"
+        android:src="@drawable/warnings"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="231dp"
+        android:layout_alignTop="@+id/btnChasse"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:id="@+id/btnChasse"
+        android:text="Chasse d'eau"
+        android:src="@drawable/flush"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="231dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:id="@+id/btnLed"
+        android:src="@drawable/led"
+        android:text="Led"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="111dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:id="@+id/btnChasse"
-        android:text="btnChasse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="231dp"
-        android:layout_alignBaseline="@+id/btnLed"
-        android:layout_alignBottom="@+id/btnLed"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:id="@+id/btnLed"
-        android:text="btnLed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="256dp"
-        tools:layout_editor_absoluteY="111dp"
-        android:layout_below="@+id/btnReglage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="156dp" />
-
-    <Button
-        android:id="@+id/btnReglage"
-        android:text="btnReglage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageButton
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:id="@+id/btnRobinet"
+        android:text="Robinet"
+        android:src="@drawable/tap"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="111dp"
+        tools:layout_editor_absoluteY="371dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
