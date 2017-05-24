@@ -17,15 +17,24 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".ConsoWaterActivity" />
-        <activity android:name=".WarningActivity" />
-        <activity android:name=".FlushActivity" />
-        <activity android:name=".LedActivity" />
-        <activity android:name=".TapActivity" />
-        <activity android:name=".PrefsActivity" />
-        <activity android:name=".SampleActivity" />
-        <activity android:name=".SampleActivity2" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".ConsoWaterActivity"
+            android:label="eWC- Consommation d'eau" />
+        <activity android:name=".WarningActivity"
+            android:label="eWC- Alertes"/>
+        <activity android:name=".FlushActivity"
+            android:label="eWC- Consommation Chasse d'eau"/>
+        <activity android:name=".LedActivity"
+            android:label="eWC"/>
+        <activity android:name=".TapActivity"
+            android:label="eWC- Consommation Robinet"/>
+        <activity android:name=".PrefsActivity"
+            android:label="eWC"/>
+        <activity android:name=".SampleActivity"
+            android:label="eWC"/>
+        <activity android:name=".SampleActivity2"
+            android:label="eWC- Palette Couleur"/>
+        <activity android:name=".SettingsActivity"
+            android:label="eWC- Réglages"/>
     </application>
 
 </manifest>

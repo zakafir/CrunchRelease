@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.github.mikephil.charting.charts.CombinedChart;
+import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -11,6 +12,8 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -28,6 +31,28 @@ public class TapActivity extends AppCompatActivity {
         combinedData.setData(lineData());
         tapCombinedChart.setData(combinedData);
         tapCombinedChart.animateY(2000);
+
+        //Pie chart
+
+        PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartTap);
+        ArrayList<Entry> entriesPieChart = new ArrayList<>();
+        entriesPieChart.add(new Entry(4.1f, 0));
+        entriesPieChart.add(new Entry(8.6f, 1));
+        entriesPieChart.add(new Entry(12f, 2));
+        entriesPieChart.add(new Entry(10.9f, 3));
+        entriesPieChart.add(new Entry(9.11f, 5));
+        entriesPieChart.add(new Entry(7.1f, 4));
+
+
+        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
+
+        PieData pieData = new PieData(getXAxisValues(), pieDataset);
+        pieDataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+        pieChartChasse.setDescription("Quantité d'eau perdue");
+        pieChartChasse.setData(pieData);
+
+        pieChartChasse.animateY(2000);
+
     }
 
 
