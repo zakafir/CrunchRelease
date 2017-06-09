@@ -4,15 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivityAdmin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_admin);
 
         ImageButton btnGoutte,btnRobinet,btnAlerte,btnChasse,btnLed,btnReglage;
 
@@ -27,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         btnGoutte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, ConsoWaterActivity.class);
+                Intent i = new Intent(MainActivityAdmin.this, ConsoWaterActivity.class);
                 startActivity(i);
             }
         });
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnRobinet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, TapActivity.class);
+                Intent i = new Intent(MainActivityAdmin.this, TapActivity.class);
                 startActivity(i);
             }
         });
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         btnAlerte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, WarningActivity.class);
+                Intent i = new Intent(MainActivityAdmin.this, WarningActivity.class);
                 startActivity(i);
             }
         });
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnChasse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, FlushActivity.class);
+                Intent i = new Intent(MainActivityAdmin.this, FlushActivity.class);
                 startActivity(i);
             }
         });
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SampleActivity2.class);
+                Intent i = new Intent(MainActivityAdmin.this, SampleActivity2.class);
                 startActivity(i);
             }
         });
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         btnReglage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, SettingsActivity.class);
+                Intent i = new Intent(MainActivityAdmin.this, SettingsActivity.class);
                 startActivity(i);
             }
         });

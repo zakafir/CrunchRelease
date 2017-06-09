@@ -8,33 +8,45 @@
         android:label="eWC"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivityAdmin"
             android:icon="@drawable/logo"
-            android:label="eWC" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:label="eWC"></activity>
+        <activity
+            android:name=".ConsoWaterActivity"
+            android:label="eWC- Consommation d&apos;eau" />
+        <activity
+            android:name=".WarningActivity"
+            android:label="eWC- Alertes" />
+        <activity
+            android:name=".FlushActivity"
+            android:label="eWC- Consommation Chasse d&apos;eau" />
+        <activity
+            android:name=".LedActivity"
+            android:label="eWC" />
+        <activity
+            android:name=".TapActivity"
+            android:label="eWC- Consommation Robinet" />
+        <activity
+            android:name=".PrefsActivity"
+            android:label="eWC" />
+        <activity
+            android:name=".SampleActivity"
+            android:label="eWC" />
+        <activity
+            android:name=".SampleActivity2"
+            android:label="eWC- Palette Couleur" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="eWC- Réglages" />
+        <activity android:name=".ReaderQRCodeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".ConsoWaterActivity"
-            android:label="eWC- Consommation d'eau" />
-        <activity android:name=".WarningActivity"
-            android:label="eWC- Alertes"/>
-        <activity android:name=".FlushActivity"
-            android:label="eWC- Consommation Chasse d'eau"/>
-        <activity android:name=".LedActivity"
-            android:label="eWC"/>
-        <activity android:name=".TapActivity"
-            android:label="eWC- Consommation Robinet"/>
-        <activity android:name=".PrefsActivity"
-            android:label="eWC"/>
-        <activity android:name=".SampleActivity"
-            android:label="eWC"/>
-        <activity android:name=".SampleActivity2"
-            android:label="eWC- Palette Couleur"/>
-        <activity android:name=".SettingsActivity"
-            android:label="eWC- Réglages"/>
+        <activity android:name=".MainActivityUser"></activity>
     </application>
 
 </manifest>

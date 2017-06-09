@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.num.linechart.MainActivity">
+    tools:context="app.num.linechart.MainActivityUser">
 
     <ImageButton
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:id="@+id/btnGoutte"
+        android:id="@+id/btnGoutteUser"
         android:text="Goutte"
         android:src="@drawable/water"
         android:layout_width="150dp"
@@ -26,43 +26,7 @@
     <ImageButton
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:id="@+id/btnReglage"
-        android:text="Settings"
-        android:src="@drawable/settings"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp" />
-
-
-    <ImageButton
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:id="@+id/btnAlerte"
-        android:text="Alerte"
-        android:src="@drawable/warnings"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignTop="@+id/btnChasse"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/btnRobinet"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnReglage"
-        android:layout_marginRight="8dp"
-        app:layout_constraintVertical_bias="0.504"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <ImageButton
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:id="@+id/btnChasse"
+        android:id="@+id/btnChasseUser"
         android:text="Chasse d'eau"
         android:src="@drawable/flush"
         android:layout_width="150dp"
@@ -72,15 +36,15 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/btnGoutte"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLed"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp" />
 
     <ImageButton
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:id="@+id/btnLed"
+        android:id="@+id/btnLedUser"
         android:src="@drawable/led"
         android:text="Led"
         android:layout_width="150dp"
@@ -88,15 +52,18 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnRobinet"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:layout_marginRight="8dp"
+        app:layout_constraintVertical_bias="0.498"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageButton
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        android:id="@+id/btnRobinet"
+        android:id="@+id/btnRobinetUser"
         android:text="Robinet"
         android:src="@drawable/tap"
         android:layout_width="150dp"
