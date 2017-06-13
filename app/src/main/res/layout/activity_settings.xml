@@ -98,7 +98,7 @@
         android:orientation="horizontal"
         android:paddingLeft="10dp"
         android:paddingTop="50dp"
-        tools:layout_editor_absoluteY="99dp"
+        tools:layout_editor_absoluteY="0dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent">
 

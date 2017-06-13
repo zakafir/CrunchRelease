@@ -13,9 +13,13 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import org.eclipse.paho.android.service.MqttAndroidClient;
+
 import java.util.ArrayList;
 
 public class FlushActivity extends AppCompatActivity {
+
+    public MqttAndroidClient mqttAndroidClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +71,7 @@ public class FlushActivity extends AppCompatActivity {
         //Bar chart
 
         BarChart barChart = (BarChart) findViewById(R.id.barChartFlush);
-        ArrayList <BarEntry> barEntries = new ArrayList<>();
+        ArrayList<BarEntry> barEntries = new ArrayList<>();
 
         barEntries.add(new BarEntry(4f, 0));
         barEntries.add(new BarEntry(8f, 1));
@@ -76,20 +80,32 @@ public class FlushActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(18f, 4));
         barEntries.add(new BarEntry(19f, 5));
 
-                barEntries.add(new BarEntry(1.1f, 0));
-                barEntries.add(new BarEntry(0.6f, 1));
-                barEntries.add(new BarEntry(0.22f, 2));
-                barEntries.add(new BarEntry(1.9f, 3));
-                barEntries.add(new BarEntry(3.5f, 4));
-                barEntries.add(new BarEntry(4f, 5));
+        barEntries.add(new BarEntry(1f, 0));
+        barEntries.add(new BarEntry(6f, 1));
+        barEntries.add(new BarEntry(2f, 2));
+        barEntries.add(new BarEntry(9f, 3));
+        barEntries.add(new BarEntry(5f, 4));
+        barEntries.add(new BarEntry(4f, 5));
 
+        barEntries.add(new BarEntry(5f, 0));
+        barEntries.add(new BarEntry(4f, 1));
+        barEntries.add(new BarEntry(3f, 2));
+        barEntries.add(new BarEntry(6f, 3));
+        barEntries.add(new BarEntry(7f, 4));
+        barEntries.add(new BarEntry(2f, 5));
 
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Consommation globale de la chasse + Fuites");
-        barDataSet.setColors(ColorTemplate.LIBERTY_COLORS);
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
 
         // creating barLabels
         ArrayList<String> barLabels = new ArrayList();
+        barLabels.add("January");
+        barLabels.add("February");
+        barLabels.add("March");
+        barLabels.add("April");
+        barLabels.add("May");
+        barLabels.add("June");
         barLabels.add("January");
         barLabels.add("February");
         barLabels.add("March");

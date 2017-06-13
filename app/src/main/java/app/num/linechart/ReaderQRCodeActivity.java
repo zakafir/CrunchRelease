@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -13,18 +13,18 @@ import com.google.zxing.integration.android.IntentResult;
 
 public class ReaderQRCodeActivity extends AppCompatActivity {
 
-    Button buttonLaunch;
+    ImageButton buttonLaunch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reader_qrcode);
-        Button scan_btn;
+        ImageButton scan_btn;
 
-        buttonLaunch = (Button) findViewById(R.id.buttonGoToApp);
+        buttonLaunch = (ImageButton) findViewById(R.id.buttonGoToApp);
 
         final Activity activity = this;
-        scan_btn = (Button) findViewById(R.id.buttonScann);
+        scan_btn = (ImageButton) findViewById(R.id.buttonScann);
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,10 +45,10 @@ public class ReaderQRCodeActivity extends AppCompatActivity {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                Toast.makeText(this, "You cancelled the scanning", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Vous avez quittez le scan", Toast.LENGTH_LONG).show();
             } else {
                 String status = result.getContents();
-                Toast.makeText(this, status, Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Vous êtes: "+status, Toast.LENGTH_LONG).show();
                 buttonLaunch.setVisibility(View.VISIBLE);
 
                 if ("admin".equals(status)) {
