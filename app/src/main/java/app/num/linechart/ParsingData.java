@@ -71,7 +71,8 @@ class ParsingData {
             for (int i = 0; i < source.length(); ++i) {
                 lineData.put("value", source.getJSONObject(i).getString("value"));
                 lineData.put("month", getMonth(source.getJSONObject(i).getString("date")));
-                lineData.put("hour", getHeure(source.getJSONObject(i).getString("date")));
+                lineData.put("hour", getHeure(source.getJSONObject(i).getString("date"))
+                        .concat("-").concat(source.getJSONObject(i).getString("value")));
                 listData.add(new TreeMap<String, String>(lineData));
                 lineData.clear();
             }

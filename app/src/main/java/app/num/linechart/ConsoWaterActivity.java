@@ -17,6 +17,9 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import static app.num.linechart.MainActivityAdmin.LIST_DATA;
 
 public class ConsoWaterActivity extends AppCompatActivity {
 
@@ -42,13 +45,42 @@ public class ConsoWaterActivity extends AppCompatActivity {
 
 
         ArrayList<String> labels = new ArrayList<String>();
-        labels.add("04h");
-        labels.add("08h");
-        labels.add("12h");
-        labels.add("16h");
-        labels.add("20h");
-        labels.add("00h");
-        //Pie chart
+        int compteur = 0;
+        for (int i = 0; i < LIST_DATA.size(); ++i) {
+            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("1h")) {
+                    if (!labels.contains(entry.getValue())) {
+                        switch (entry.getValue()){
+                            case "1h-5h-9h-10h": compteur = compteur+1;
+                        }
+                        labels.add(entry.getValue());
+                }
+                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("5h")) {
+                    if (!labels.contains(entry.getValue())) {
+                        switch (entry.getValue()){
+                            case "1h-5h-9h-10h": compteur = compteur+1;
+                        }
+                        labels.add(entry.getValue());
+                    }
+                }
+                else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("9h")) {
+                    if (!labels.contains(entry.getValue())) {
+                        switch (entry.getValue()){
+                            case "1h-5h-9h-10h": compteur = compteur+1;
+                        }
+                        labels.add(entry.getValue());
+                    }
+                }
+                else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("10h")) {
+                    if (!labels.contains(entry.getValue())) {
+                        switch (entry.getValue()){
+                            case "1h-5h-9h-10h": compteur = compteur+1;
+                        }
+                        labels.add(entry.getValue());
+                    }
+                }
+            }
+        }
 
         PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartChasse);
         ArrayList<Entry> entriesPieChart = new ArrayList<>();
