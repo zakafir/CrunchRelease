@@ -20,8 +20,13 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import static app.num.linechart.MainActivityAdmin.LIST_DATA;
+import static app.num.linechart.ParsingData.after;
+import static app.num.linechart.ParsingData.before;
 
 public class ConsoWaterActivity extends AppCompatActivity {
+
+    float[] compteur = new float[4];
+    ArrayList<String> labels = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,102 +40,89 @@ public class ConsoWaterActivity extends AppCompatActivity {
         combinedChart.setData(combinedData);
         combinedChart.animateY(3000);
 
-        ArrayList<Entry> entries = new ArrayList<>();
-        entries.add(new Entry(0f, 0));
-        entries.add(new Entry(0f, 1));
-        entries.add(new Entry(6f, 2));
-        entries.add(new Entry(6f, 3));
-        entries.add(new Entry(0f, 4));
-        entries.add(new Entry(0f, 5));
-
-
-        ArrayList<String> labels = new ArrayList<String>();
-        int compteur = 0;
-        for (int i = 0; i < LIST_DATA.size(); ++i) {
-            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
-                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("1h")) {
-                    if (!labels.contains(entry.getValue())) {
-                        switch (entry.getValue()){
-                            case "1h-5h-9h-10h": compteur = compteur+1;
-                        }
-                        labels.add(entry.getValue());
-                }
-                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("5h")) {
-                    if (!labels.contains(entry.getValue())) {
-                        switch (entry.getValue()){
-                            case "1h-5h-9h-10h": compteur = compteur+1;
-                        }
-                        labels.add(entry.getValue());
-                    }
-                }
-                else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("9h")) {
-                    if (!labels.contains(entry.getValue())) {
-                        switch (entry.getValue()){
-                            case "1h-5h-9h-10h": compteur = compteur+1;
-                        }
-                        labels.add(entry.getValue());
-                    }
-                }
-                else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().equals("10h")) {
-                    if (!labels.contains(entry.getValue())) {
-                        switch (entry.getValue()){
-                            case "1h-5h-9h-10h": compteur = compteur+1;
-                        }
-                        labels.add(entry.getValue());
-                    }
-                }
-            }
-        }
+        float compteurPieChart[] = new float[2];
 
         PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartChasse);
         ArrayList<Entry> entriesPieChart = new ArrayList<>();
-        entriesPieChart.add(new Entry(4.1f, 0));
-        entriesPieChart.add(new Entry(8.6f, 1));
-        entriesPieChart.add(new Entry(10.9f, 3));
-        entriesPieChart.add(new Entry(9.11f, 5));
+        String valuePieChart;
+        for (int i = 0; i < LIST_DATA.size(); ++i) {
+            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("2016")) {
+                    valuePieChart = after(entry.getValue(), "-");
+                    compteurPieChart[0] += Float.parseFloat(valuePieChart);
+                }else
+                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("2017")) {
+                    valuePieChart = after(entry.getValue(), "-");
+                    compteurPieChart[1] += Float.parseFloat(valuePieChart);
+                }
+            }
+        }
+        entriesPieChart.add(new Entry(compteurPieChart[0], 0));
+        entriesPieChart.add(new Entry(compteurPieChart[1], 1));
 
-        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
-
-        PieData pieData = new PieData(labels, pieDataset);
-        pieDataset.setColors(ColorTemplate.VORDIPLOM_COLORS); //
-        pieChartChasse.setDescription("Quantité d'eau perdue");
+        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "Consommation d'eau 2016/2017");
+        ArrayList<String> pieChartLabels = new ArrayList<String>();
+        pieChartLabels.add("2016");
+        pieChartLabels.add("2017");
+        PieData pieData = new PieData(pieChartLabels, pieDataset);
+        pieDataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+        pieChartChasse.setDescription("Consommation annuelle");
         pieChartChasse.setData(pieData);
 
         pieChartChasse.animateY(2000);
     }
     private ArrayList<String> getXAxisValues() {
-        ArrayList<String> labels = new ArrayList();
-        labels.add("04h");
-        labels.add("08h");
-        labels.add("12h");
-        labels.add("16h");
-        labels.add("20h");
-        labels.add("00h");
+        String value;
+        for (int i = 0; i < LIST_DATA.size(); ++i) {
+            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("1h")) {
+                    value = after(entry.getValue(), "-");
+                    compteur[0] += Float.parseFloat(value);
+                    if (!labels.contains(before(entry.getValue(), "-"))) {
+                        labels.add(before(entry.getValue(), "-"));
+                    }
+                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("5h")) {
+                    value = after(entry.getValue(), "-");
+                    compteur[1] += Float.parseFloat(value);
+                    if (!labels.contains(before(entry.getValue(), "-"))) {
+                        labels.add(before(entry.getValue(), "-"));
+                    }
+                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("9h")) {
+                    value = after(entry.getValue(), "-");
+                    compteur[2] += Float.parseFloat(value);
+                    if (!labels.contains(before(entry.getValue(), "-"))) {
+                        labels.add(before(entry.getValue(), "-"));
+                    }
+                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("10h")) {
+                    value = after(entry.getValue(), "-");
+                    compteur[3] += Float.parseFloat(value);
+                    if (!labels.contains(before(entry.getValue(), "-"))) {
+                        labels.add(before(entry.getValue(), "-"));
+                    }
+                }
+            }
+        }
         return labels;
     }
 
     private LineData lineData(){
             ArrayList<Entry> line = new ArrayList();
-            line.add(new Entry(1f, 0));
-            line.add(new Entry(2f, 1));
-            line.add(new Entry(9f, 2));
-            line.add(new Entry(3f, 3));
-            line.add(new Entry(4.5f, 4));
-            line.add(new Entry(2f, 5));
+            line.add(new Entry(compteur[0]/4f, 0));
+            line.add(new Entry(compteur[1]/4f, 1));
+            line.add(new Entry(compteur[2]/4f, 2));
+            line.add(new Entry(compteur[3]/4f, 3));
             LineDataSet lineDataSet = new LineDataSet(line, "Conso moyenne");
             LineData lineData = new LineData(getXAxisValues(),lineDataSet);
             return lineData;
         }
     private BarData barData(){
             ArrayList<BarEntry> group1 = new ArrayList();
-                 group1.add(new BarEntry(2f, 0));
-                 group1.add(new BarEntry(4f, 1));
-                 group1.add(new BarEntry(18f, 2));
-                 group1.add(new BarEntry(6f, 3));
-                 group1.add(new BarEntry(9f, 4));
-                 group1.add(new BarEntry(4f, 5));
-            BarDataSet barDataSet = new BarDataSet(group1, "Consommation de la chasse");
-                 barDataSet.setColors(ColorTemplate.PASTEL_COLORS);
+                 group1.add(new BarEntry(compteur[0], 0));
+                 group1.add(new BarEntry(compteur[1], 1));
+                 group1.add(new BarEntry(compteur[2], 2));
+                 group1.add(new BarEntry(compteur[3], 3));
+            BarDataSet barDataSet = new BarDataSet(group1, "Consommation total");
+                 barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
             BarData barData = new BarData(getXAxisValues(),barDataSet);
          return barData;
         }
