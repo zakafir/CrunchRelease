@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,10 +15,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 public class MainActivityAdmin extends AppCompatActivity {
 
-    public static String JSON_DATA;
+    public static String json_data = "";
+    public static List<Map<String, String>> LIST_DATA = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +38,25 @@ public class MainActivityAdmin extends AppCompatActivity {
         btnLed = (ImageButton) findViewById(R.id.btnLed);
         btnReglage = (ImageButton) findViewById(R.id.btnReglage);
 
+        String url = getDirectionsUrl();
+
+        DownloadTask downloadTask = new DownloadTask();
+
+        // Start downloading json data from Google Directions API
+        downloadTask.execute(url);
+
+        ParsingData parsingData = new ParsingData();
+        LIST_DATA = parsingData.retrieve();
+        if (!LIST_DATA.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Data downloaded", Toast.LENGTH_LONG).show();
+        }
+
 
         btnGoutte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivityAdmin.this, ConsoWaterActivity.class);
                 startActivity(i);
-                String url = getDirectionsUrl();
-
-                DownloadTask downloadTask = new DownloadTask();
-
-                // Start downloading json data from Google Directions API
-                downloadTask.execute(url);
             }
         });
 
@@ -94,7 +106,7 @@ public class MainActivityAdmin extends AppCompatActivity {
     private String getDirectionsUrl() {
 
         // Building the url to the web service
-        String url = "https://jsonplaceholder.typicode.com/posts/1";
+        String url = "http://31.33.137.249:4567/api/data";
 
 
         return url;
@@ -104,7 +116,6 @@ public class MainActivityAdmin extends AppCompatActivity {
      * A method to download json data from url
      */
     private String downloadUrl(String strUrl) throws IOException {
-        String data = "";
         InputStream iStream = null;
         HttpURLConnection urlConnection = null;
         try {
@@ -128,7 +139,7 @@ public class MainActivityAdmin extends AppCompatActivity {
                 sb.append(line);
             }
 
-            data = sb.toString();
+            json_data = sb.toString();
 
             br.close();
 
@@ -138,7 +149,7 @@ public class MainActivityAdmin extends AppCompatActivity {
             iStream.close();
             urlConnection.disconnect();
         }
-        return data;
+        return json_data;
     }
 
     // Fetches data from url passed
@@ -148,18 +159,13 @@ public class MainActivityAdmin extends AppCompatActivity {
         @Override
         protected String doInBackground(String... url) {
 
-            // For storing data from web service
-            String data = "";
-
             try {
                 // Fetching the data from web service
-                data = downloadUrl(url[0]);
-                JSON_DATA = data;
-                Log.d("Here", JSON_DATA);
+                json_data = downloadUrl(url[0]);
             } catch (Exception e) {
                 Log.d("Background Task", e.toString());
             }
-            return data;
+            return json_data;
         }
 
         // Executes in UI thread, after the execution of

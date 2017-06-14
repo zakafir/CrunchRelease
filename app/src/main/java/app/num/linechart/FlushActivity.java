@@ -16,6 +16,9 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import org.eclipse.paho.android.service.MqttAndroidClient;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import static app.num.linechart.MainActivityAdmin.LIST_DATA;
 
 public class FlushActivity extends AppCompatActivity {
 
@@ -79,6 +82,10 @@ public class FlushActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(12f, 3));
         barEntries.add(new BarEntry(18f, 4));
         barEntries.add(new BarEntry(19f, 5));
+        barEntries.add(new BarEntry(10f, 6));
+        barEntries.add(new BarEntry(4f, 7));
+        barEntries.add(new BarEntry(2f, 8));
+        barEntries.add(new BarEntry(9f, 9));
 
         barEntries.add(new BarEntry(1f, 0));
         barEntries.add(new BarEntry(6f, 1));
@@ -86,6 +93,10 @@ public class FlushActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(9f, 3));
         barEntries.add(new BarEntry(5f, 4));
         barEntries.add(new BarEntry(4f, 5));
+        barEntries.add(new BarEntry(10f, 6));
+        barEntries.add(new BarEntry(4f, 7));
+        barEntries.add(new BarEntry(2f, 8));
+        barEntries.add(new BarEntry(9f, 9));
 
         barEntries.add(new BarEntry(5f, 0));
         barEntries.add(new BarEntry(4f, 1));
@@ -93,6 +104,10 @@ public class FlushActivity extends AppCompatActivity {
         barEntries.add(new BarEntry(6f, 3));
         barEntries.add(new BarEntry(7f, 4));
         barEntries.add(new BarEntry(2f, 5));
+        barEntries.add(new BarEntry(10f, 6));
+        barEntries.add(new BarEntry(4f, 7));
+        barEntries.add(new BarEntry(2f, 8));
+        barEntries.add(new BarEntry(9f, 9));
 
 
         BarDataSet barDataSet = new BarDataSet(barEntries, "Consommation globale de la chasse + Fuites");
@@ -100,24 +115,32 @@ public class FlushActivity extends AppCompatActivity {
 
         // creating barLabels
         ArrayList<String> barLabels = new ArrayList();
-        barLabels.add("January");
-        barLabels.add("February");
-        barLabels.add("March");
-        barLabels.add("April");
-        barLabels.add("May");
-        barLabels.add("June");
-        barLabels.add("January");
-        barLabels.add("February");
-        barLabels.add("March");
-        barLabels.add("April");
-        barLabels.add("May");
-        barLabels.add("June");
-        barLabels.add("January");
-        barLabels.add("February");
-        barLabels.add("March");
-        barLabels.add("April");
-        barLabels.add("May");
-        barLabels.add("June");
+
+        for (int i = 0; i < LIST_DATA.size(); ++i) {
+            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getKey().equals("month")) {
+                    if (!barLabels.contains(entry.getValue())) {
+                        barLabels.add(entry.getValue());
+                    }
+                }
+            }
+        }
+
+        /*for (int i = 0; i < LIST_DATA.size(); ++i) {
+            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getKey().equals("value")) {
+                    for(int j = 0; j<10;j++){
+                        barEntries.add(new BarEntry(Float.parseFloat(entry.getValue()), j));
+                    }
+                    }
+                }
+            }*/
+
+        for (int k = 0; k <= 1; ++k) {
+            for (int i = 0; i < 10; ++i) {
+                barLabels.add(barLabels.get(i));
+            }
+        }
 
         BarData barData = new BarData(barLabels, barDataSet);
         barChart.setData(barData);
