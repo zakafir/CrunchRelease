@@ -92,7 +92,7 @@ public class SampleActivity extends ActionBarActivity {
 		findViewById(R.id.btn_view).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SampleActivity.this, SampleActivity2.class);
+				Intent intent = new Intent(SampleActivity.this, LedActivity.class);
 				startActivity(intent);
 			}
 		});

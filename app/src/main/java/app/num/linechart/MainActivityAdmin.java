@@ -87,7 +87,7 @@ public class MainActivityAdmin extends AppCompatActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivityAdmin.this, SampleActivity2.class);
+                Intent i = new Intent(MainActivityAdmin.this, LedActivity.class);
                 startActivity(i);
             }
         });

@@ -49,7 +49,7 @@ public class MainActivityUser extends AppCompatActivity {
         btnLed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivityUser.this, SampleActivity2.class);
+                Intent i = new Intent(MainActivityUser.this, LedActivity.class);
                 startActivity(i);
             }
         });

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.num.linechart">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,13 @@
         <activity
             android:name=".MainActivityAdmin"
             android:icon="@drawable/logo"
-            android:label="eWC"></activity>
+            android:label="eWC">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ConsoWaterActivity"
             android:label="eWC- Consommation d&apos;eau" />
@@ -24,9 +30,6 @@
             android:name=".FlushActivity"
             android:label="eWC- Consommation Chasse d&apos;eau" />
         <activity
-            android:name=".LedActivity"
-            android:label="eWC" />
-        <activity
             android:name=".TapActivity"
             android:label="eWC- Consommation Robinet" />
         <activity
@@ -36,20 +39,15 @@
             android:name=".SampleActivity"
             android:label="eWC" />
         <activity
-            android:name=".SampleActivity2"
+            android:name=".LedActivity"
             android:label="eWC- Palette Couleur" />
         <activity
             android:name=".SettingsActivity"
             android:label="eWC- Réglages" />
-        <activity android:name=".ReaderQRCodeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".MainActivityUser"
-            android:label="eWC- Menu"></activity>
+        <activity android:name=".ReaderQRCodeActivity"></activity>
+        <activity
+            android:name=".MainActivityUser"
+            android:label="eWC- Menu" />
     </application>
 
 </manifest>
