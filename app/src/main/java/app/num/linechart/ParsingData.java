@@ -64,6 +64,14 @@ class ParsingData {
     }
 
     public List<Map<String, String>> retrieve() {
+
+        //essential to download data properly
+        try{
+            Thread.sleep(5000);
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+
         try {
             Map<String, String> lineData = new TreeMap<>();
             JSONArray source = new JSONArray(json_data);
