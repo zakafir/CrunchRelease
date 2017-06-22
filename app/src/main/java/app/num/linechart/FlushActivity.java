@@ -20,9 +20,6 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.Map;
-
-import static app.num.linechart.MainActivityAdmin.LIST_DATA;
 
 public class FlushActivity extends AppCompatActivity {
 
@@ -120,15 +117,39 @@ public class FlushActivity extends AppCompatActivity {
         // creating barLabels
         ArrayList<String> barLabels = new ArrayList();
 
-        for (int i = 0; i < LIST_DATA.size(); ++i) {
-            for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
-                if (!LIST_DATA.get(i).isEmpty() && entry.getKey().equals("month")) {
-                    if (!barLabels.contains(entry.getValue())) {
-                        barLabels.add(entry.getValue());
-                    }
-                }
-            }
-        }
+        barLabels.add("January");
+        barLabels.add("February");
+        barLabels.add("March");
+        barLabels.add("April");
+        barLabels.add("May");
+        barLabels.add("June");
+        barLabels.add("July");
+        barLabels.add("August");
+        barLabels.add("September");
+        barLabels.add("October");
+
+        barLabels.add("January");
+        barLabels.add("February");
+        barLabels.add("March");
+        barLabels.add("April");
+        barLabels.add("May");
+        barLabels.add("June");
+        barLabels.add("July");
+        barLabels.add("August");
+        barLabels.add("September");
+        barLabels.add("October");
+
+        barLabels.add("January");
+        barLabels.add("February");
+        barLabels.add("March");
+        barLabels.add("April");
+        barLabels.add("May");
+        barLabels.add("June");
+        barLabels.add("July");
+        barLabels.add("August");
+        barLabels.add("September");
+        barLabels.add("October");
+
 
         /*for (int i = 0; i < LIST_DATA.size(); ++i) {
             for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
@@ -140,11 +161,6 @@ public class FlushActivity extends AppCompatActivity {
                 }
             }*/
 
-        for (int k = 0; k <= 1; ++k) {
-            for (int i = 0; i < 10; ++i) {
-                barLabels.add(barLabels.get(i));
-            }
-        }
 
         BarData barData = new BarData(barLabels, barDataSet);
         barChart.setData(barData);
