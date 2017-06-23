@@ -42,7 +42,7 @@ public class ConsoWaterActivity extends AppCompatActivity {
         combinedData.setData(lineData());
         combinedChart.setData(combinedData);
         combinedChart.animateY(3000);
-        combinedChart.setVisibleXRangeMaximum(5);
+        combinedChart.setVisibleXRangeMaximum(10);
 
         float compteurPieChart[] = new float[2];
 
@@ -54,8 +54,7 @@ public class ConsoWaterActivity extends AppCompatActivity {
                 if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("2016")) {
                     valuePieChart = after(entry.getValue(), "-");
                     compteurPieChart[0] += Float.parseFloat(valuePieChart);
-                }else
-                if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("2017")) {
+                } else if (!LIST_DATA.get(i).isEmpty() && entry.getValue().contains("2017")) {
                     valuePieChart = after(entry.getValue(), "-");
                     compteurPieChart[1] += Float.parseFloat(valuePieChart);
                 }
@@ -75,57 +74,61 @@ public class ConsoWaterActivity extends AppCompatActivity {
 
         pieChartChasse.animateY(2000);
     }
+
     private ArrayList<String> getXAxisValues() {
         String value;
         String lbl;
+        int j = 0;
         for (int i = 0; i < LIST_DATA.size(); ++i) {
             for (Map.Entry<String, String> entry : LIST_DATA.get(i).entrySet()) {
-                if (!LIST_DATA.get(i).isEmpty() && entry.getKey().equals("hour") && entry.getValue().startsWith(String.valueOf(getCurrentHour()-3))) {
+                if (!LIST_DATA.get(i).isEmpty() && entry.getKey().equals("hour")) {
                     lbl = before(entry.getValue(), "-")
                             .concat("h").concat(after(entry.getValue(), "-"));
 
-                        value = between(entry.getValue(), "-", "-");
-                        compteur[i] += Float.parseFloat(value);
-                        labels.add(lbl);
-                    }
-            }
+                    value = between(entry.getValue(), "-", "-");
+                    compteur[j] += Float.parseFloat(value);
+                    j++;
+                    labels.add(lbl);
                 }
+            }
+        }
         return labels;
     }
 
-    private LineData lineData(){
-            ArrayList<Entry> line = new ArrayList();
-        for(int i =0; i<compteur.length;++i){
-            if(compteur[i]!=0.0){
-                line.add(new Entry(compteur[i]/4f, i));
+    private LineData lineData() {
+        ArrayList<Entry> line = new ArrayList();
+        for (int i = 0; i < compteur.length; ++i) {
+            if (compteur[i] != 0.0) {
+                line.add(new Entry(compteur[i] / 4f, i));
             }
         }
-            LineDataSet lineDataSet = new LineDataSet(line, "Conso moyenne");
-            LineData lineData = new LineData(getXAxisValues(),lineDataSet);
+        LineDataSet lineDataSet = new LineDataSet(line, "Conso moyenne");
+        LineData lineData = new LineData(getXAxisValues(), lineDataSet);
         lineDataSet.setDrawCubic(true);
-            return lineData;
-        }
-    private BarData barData(){
+        return lineData;
+    }
 
-            ArrayList<BarEntry> group1 = new ArrayList();
-        for(int i =0; i<compteur.length;++i){
-            if(compteur[i]!=0.0){
+    private BarData barData() {
+
+        ArrayList<BarEntry> group1 = new ArrayList();
+        for (int i = 0; i < compteur.length; ++i) {
+            if (compteur[i] != 0.0) {
                 group1.add(new BarEntry(compteur[i], i));
             }
         }
-            BarDataSet barDataSet = new BarDataSet(group1, "Consommation total");
-                 barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-            BarData barData = new BarData(getXAxisValues(),barDataSet);
-         return barData;
-        }
+        BarDataSet barDataSet = new BarDataSet(group1, "Consommation total");
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        BarData barData = new BarData(getXAxisValues(), barDataSet);
+        return barData;
+    }
 
-    private int getCurrentHour(){
+    private int getCurrentHour() {
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("H");
+        SimpleDateFormat sdf = new SimpleDateFormat("h");
         return Integer.parseInt(sdf.format(cal.getTime()));
     }
 
-    private int getCurrentMinute(){
+    private int getCurrentMinute() {
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("mm");
         return Integer.parseInt(sdf.format(cal.getTime()));

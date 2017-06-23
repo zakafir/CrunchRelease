@@ -41,7 +41,7 @@
             tools:layout_editor_absoluteY="232dp" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnSemaine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Semaine"
@@ -49,7 +49,7 @@
             tools:layout_editor_absoluteY="229dp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnMois"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Mois"

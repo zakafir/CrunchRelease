@@ -2,6 +2,8 @@ package app.num.linechart;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -32,26 +34,73 @@ public class TapActivity extends AppCompatActivity {
         tapCombinedChart.setData(combinedData);
         tapCombinedChart.animateY(2000);
 
-        //Pie chart
+        //btn semaine
+        Button btnSemaine = (Button) findViewById(R.id.btnSemaine);
 
-        PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartTap);
-        ArrayList<Entry> entriesPieChart = new ArrayList<>();
-        entriesPieChart.add(new Entry(4.1f, 0));
-        entriesPieChart.add(new Entry(8.6f, 1));
-        entriesPieChart.add(new Entry(12f, 2));
-        entriesPieChart.add(new Entry(10.9f, 3));
-        entriesPieChart.add(new Entry(9.11f, 5));
-        entriesPieChart.add(new Entry(7.1f, 4));
+        btnSemaine.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Pie chart
+
+                PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartTap);
+                ArrayList<Entry> entriesPieChart = new ArrayList<>();
+                entriesPieChart.add(new Entry(40.1f, 0));
+                entriesPieChart.add(new Entry(85.6f, 1));
+                entriesPieChart.add(new Entry(70f, 2));
+                entriesPieChart.add(new Entry(61f, 3));
+                entriesPieChart.add(new Entry(90f, 5));
+                entriesPieChart.add(new Entry(19.5f, 4));
 
 
-        PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
+                PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
 
-        PieData pieData = new PieData(getXAxisValues(), pieDataset);
-        pieDataset.setColors(ColorTemplate.COLORFUL_COLORS); //
-        pieChartChasse.setDescription("Quantité d'eau perdue");
-        pieChartChasse.setData(pieData);
+                PieData pieData = new PieData(getXAxisValuesPieWeek(), pieDataset);
+                pieDataset.setColors(ColorTemplate.COLORFUL_COLORS); //
+                pieChartChasse.setDescription("Consommation d'eau");
+                pieChartChasse.setData(pieData);
 
-        pieChartChasse.animateY(2000);
+                pieChartChasse.animateY(2000);
+
+
+            }
+        });
+
+
+
+        //btn mois
+        Button btnMois = (Button) findViewById(R.id.btnMois);
+
+        btnMois.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Pie chart
+
+                PieChart pieChartChasse = (PieChart) findViewById(R.id.pieChartTap);
+                ArrayList<Entry> entriesPieChart = new ArrayList<>();
+                entriesPieChart.add(new Entry(450.1f, 0));
+                entriesPieChart.add(new Entry(396f, 1));
+                entriesPieChart.add(new Entry(303f, 2));
+                entriesPieChart.add(new Entry(215f, 3));
+                entriesPieChart.add(new Entry(191f, 5));
+                entriesPieChart.add(new Entry(576f, 4));
+
+
+                PieDataSet pieDataset = new PieDataSet(entriesPieChart, "");
+
+                PieData pieData = new PieData(getXAxisValuesPieMonth(), pieDataset);
+                pieDataset.setColors(ColorTemplate.JOYFUL_COLORS); //
+                pieChartChasse.setDescription("Consommation d'eau");
+                pieChartChasse.setData(pieData);
+
+                pieChartChasse.animateY(2000);
+
+
+            }
+        });
+
+
 
     }
 
@@ -67,6 +116,28 @@ public class TapActivity extends AppCompatActivity {
         return labels;
     }
 
+    private ArrayList<String> getXAxisValuesPieWeek() {
+        ArrayList<String> labels = new ArrayList();
+        labels.add("Lundi");
+        labels.add("Mardi");
+        labels.add("Mercredi");
+        labels.add("Jeudi");
+        labels.add("Vendredi");
+        labels.add("Samedi");
+        return labels;
+    }
+
+    private ArrayList<String> getXAxisValuesPieMonth() {
+        ArrayList<String> labels = new ArrayList();
+        labels.add("January");
+        labels.add("February");
+        labels.add("March");
+        labels.add("April");
+        labels.add("May");
+        labels.add("June");
+        return labels;
+    }
+
     private LineData lineData(){
         ArrayList<Entry> line = new ArrayList();
         line.add(new Entry(1f, 0));
@@ -76,6 +147,7 @@ public class TapActivity extends AppCompatActivity {
         line.add(new Entry(2.5f, 4));
         line.add(new Entry(2f, 5));
         LineDataSet lineDataSet = new LineDataSet(line, "Consommation moyenne du robinet");
+        lineDataSet.setDrawCubic(true);
         LineData lineData = new LineData(getXAxisValues(),lineDataSet);
         return lineData;
     }

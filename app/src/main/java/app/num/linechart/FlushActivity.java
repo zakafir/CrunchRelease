@@ -180,7 +180,7 @@ public class FlushActivity extends AppCompatActivity {
             public void run() {
                 addNotificationFuite(getApplicationContext());
             }
-        }, 10000);
+        }, 13000);
 
         Handler handler2 = new Handler();
         handler2.postDelayed(new Runnable() {
@@ -188,7 +188,7 @@ public class FlushActivity extends AppCompatActivity {
             public void run() {
                 addNotificationDoubleChasse(getApplicationContext());
             }
-        }, 27000);
+        }, 30000);
 
 
 
