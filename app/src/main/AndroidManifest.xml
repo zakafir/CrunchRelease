@@ -14,11 +14,6 @@
             android:name=".MainActivityAdmin"
             android:icon="@drawable/logo"
             android:label="eWC">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ConsoWaterActivity"
@@ -44,7 +39,13 @@
         <activity
             android:name=".SettingsActivity"
             android:label="eWC- Réglages" />
-        <activity android:name=".ReaderQRCodeActivity"></activity>
+        <activity android:name=".ReaderQRCodeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".MainActivityUser"
             android:label="eWC- Menu" />
